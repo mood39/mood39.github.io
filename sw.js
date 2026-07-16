@@ -8,8 +8,14 @@
    - 跨源請求（如紫微之 iztro CDN）：cache-first，首次上線取得後永久可離線。
    更新引擎後欲強制全員換版：把 VER 加一即可。 */
 "use strict";
-const VER = "wushu-v1";
+const VER = "wushu-v2";
 const PRECACHE = [
+  "/arithmetic/",
+  "/arithmetic/manifest.json",
+  "/arithmetic/apple-touch-icon.png",
+  "/arithmetic/icon-192.png",
+  "/arithmetic/icon-512.png",
+  "/arithmetic/icon-maskable-512.png",
   "/Taiyishenshu/",
   "/daliuren/",
   "/ziwei/",
