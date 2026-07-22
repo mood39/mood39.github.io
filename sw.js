@@ -27,6 +27,7 @@ const PRECACHE = [
   "/ziwei/",
   "/qimen/",
   "/liuyao/",
+  "/taixuan/",
 ];
 
 self.addEventListener("install", e => {
