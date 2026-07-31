@@ -8,7 +8,7 @@
    - 跨源請求（如紫微之 iztro CDN）：cache-first，首次上線取得後永久可離線。
    更新引擎後欲強制全員換版：把 VER 加一即可。 */
 "use strict";
-const VER = "wushu-v3";
+const VER = "wushu-v4";
 const PRECACHE = [
   "/",
   "/manifest.json",
