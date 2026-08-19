@@ -33,6 +33,7 @@ const PRECACHE = [
   "/cantong/", 
   "/sukuyo74/",  
   "/tsinghuabamboo/",
+  "/fengshui/",
 ];
 
 self.addEventListener("install", e => {
