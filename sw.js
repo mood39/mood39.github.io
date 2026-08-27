@@ -34,6 +34,7 @@ const PRECACHE = [
   "/sukuyo74/",  
   "/tsinghuabamboo/",
   "/fengshui/",
+   "/landform/",
 ];
 
 self.addEventListener("install", e => {
