@@ -8,7 +8,7 @@
    - 跨源請求（如紫微之 iztro CDN）：cache-first，首次上線取得後永久可離線。
    更新引擎後欲強制全員換版：把 VER 加一即可。 */
 "use strict";
-const VER = "wushu-v4";
+const VER = "wushu-v5";
 const PRECACHE = [
   "/",
   "/manifest.json",
@@ -56,10 +56,18 @@ self.addEventListener("activate", e => {
   })());
 });
 
+/* 即時取得之外部資料來源：一律直通網路，不進任何快取。
+   巒頭量測器需逐次取當地高程與水系，若被 cache-first 接手，
+   第一次取得之結果會被永久快取——換了座標仍回舊資料，且不報錯，靜靜地錯。 */
+const LIVE_HOSTS = ["open-meteo.com", "overpass-api.de", "overpass.kumi.systems"];
+const isLive = url => LIVE_HOSTS.some(h => url.hostname === h || url.hostname.endsWith("." + h));
+
 self.addEventListener("fetch", e => {
   const req = e.request;
   if (req.method !== "GET") return;
-  const sameOrigin = new URL(req.url).origin === self.location.origin;
+  const url = new URL(req.url);
+  if (isLive(url)) return;                 /* 放行，交還瀏覽器自理 */
+  const sameOrigin = url.origin === self.location.origin;
 
   if (sameOrigin) {
     /* stale-while-revalidate：快取先行，網路背景補新 */
